@@ -137,3 +137,11 @@ int main(){
     lib.returnBook("Clean Code", "Alice");
     lib.printAllBooks();
 }
+/*Advantages of using OOP over procedural 
+Encapsulation:
+Private fields (available, borrowedTitles) can only be changed through class methods, preventing invalid states from outside code.
+Reusability: 
+Book and Member classes are self-contained and could be reused in another program without modific
+*/
+
+ 
