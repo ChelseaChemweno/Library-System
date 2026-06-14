@@ -3,18 +3,15 @@
 #include<string>
 #include<vector>
 #include<algorithm>
-#include<csstdio>
-
-
-
+#include<cstdio>
 using namespace std;
 
 class Book {
     private:
     // Hidden from outside the class 
-    string : title ;
-    string : author ;
-    bool : available;
+    string  title ;
+    string  author ;
+    bool  available;
 
     public:
     //Constructor runs when a book is object is created 
@@ -30,21 +27,21 @@ class Book {
         return true; // return success 
     }
     // Mark the book available when returned 
-    void returnedBook (){ available = true}
+    void returnBook (){ available = true;}
     //returns the book title , author and availabilty without allowing it to be changed
     string getTitle()     const { return title; }
     string getAuthor()   const {return author;}
     bool isAvailable() const {return available ;}
-}
-// prints one row of the book , formatted and alligned using printf
-void printRow(int index) const{
-    printf(" %-4d %-30 %-18 %s\n",
-    index  //Row number 
+
+    // prints one row of the book , formatted and alligned using printf
+        void printRow(int index) const{
+        printf(" %-4d %-30s %-18s %s\n",
+    index,  //Row number 
     // converts C-str for printf
     title.c_str(),
     author.c_str(),
-    available ? "[available]" : "[borrowed]" ; // checking the status of the availabiliy of the book 
-    )
+   available ? "[available]" : "[borrowed]");// checking the status of the availabiliy of the book 
+        }
      //prints a single search-result 
     void printSearchResult()const{
         cout <<" -> \" " << title << " \" by" << author
@@ -54,7 +51,36 @@ void printRow(int index) const{
     bool matches(const string& keyword ) const {
         return 
         title.find(keyword) !=string :: npos || // npos means not found 
-        author.find (keyword) !=string ::npos ||
-        
+        author.find (keyword) !=string ::npos;     
     }
+
+
 };
+int main() {
+    Book b("The Great Gatsby", "F. Scott Fitzgerald");
+    Book c ("Education" ,"Chelsea");
+
+    // Test initial state
+    b.printRow(1);
+    b.printSearchResult();
+    c.printRow(2);
+    c.printSearchResult();
+
+
+    // // Test borrow
+    cout << "Borrow: " << (b.borrow() ? "success" : "failed") << "\n";
+    b.printRow(1);  // Should show [borrowed]
+    cout <<"Borrow :"<< (c.borrow() ? "success" :"failed")<< "\n";
+    // // Test double-borrow guard
+    // cout << "Borrow again: " << (b.borrow() ? "success" : "failed") << "\n";
+
+    // // Test return
+    // b.returnBook();
+    // b.printRow(1);  // Should show [available]
+
+    // // Test matches
+    // cout << "Matches 'Gatsby': " << b.matches("Gatsby") << "\n";
+    // cout << "Matches 'Tolkien': " << b.matches("Tolkien") << "\n";
+
+    return 0;
+}
