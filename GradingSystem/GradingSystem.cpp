@@ -40,6 +40,10 @@ s -> id = id;
 
  cout << "  How many subjects (1-" << MAX_SUBJECTS << "): ";
  cin >> s->numSubjects;
- 
+
+ for(int i = 0; i< s->numSubjects;++i){
+    cout <<"Grade for Subject" << (i +1)<< "0-100";
+    cin >> s->grades[i];
+ }
 };
 
