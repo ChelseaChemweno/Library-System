@@ -23,6 +23,8 @@
 
         cout << "Enter student name: "<< endl;
         cin >> name;
+        cin.ignore();
+        getline(cin, name);
 
         cout << "Enter student marks:"<<endl;
         cin >> marks;   
@@ -89,12 +91,11 @@ int main(){
             
             case 3:
             s.clearFile();
+            break;
 
             case 4:
-            cout << "Invalid Choice!";
-
-
-
+            cout << "Exit the program"<< endl;
+            break;
         }
     } while (choice !=4);
     return 0;
@@ -105,4 +106,23 @@ int main(){
 // ifstream to read from a file 
 // ofstream to create /open and write a file 
 // e.g ofstream myfile ("example.txt") OR 
+
+
+// A file pointer is a marker that keeps track of the current position within the file 
+// Whenever a program reads or writes to a file the file pointer amoves to the next location 
+// Two main pointers 
+// gptr- used when reading data in a file 
+// pptr-used for writing data to a file 
+// A file pointer is useful as 
+// a)It allows random access to records without reading the entire file 
+// b)It allows updating specifc files 
+// c)It imporves the efficieny when working with large files 
+
+// EndOffILE 
+// It indicates that the program has reached the end of a file and there is no more data to read 
+// Funtions of EOF
+// a) It helps reading invalid or non -existant data 
+// b)It avoids program crashes or errors 
+// c)It ensures all records are processed excatly once
+
 
